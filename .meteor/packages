@@ -3,6 +3,37 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
+# Packages from release:
 meteor-platform
-autopublish
-insecure
+less
+fastclick
+launch-screen
+jquery
+accounts-facebook
+service-configuration
+#autopublish
+#insecure
+
+
+# Packages from Atmosphere:
+mquandalle:jade
+iron:router
+zimme:iron-router-active
+
+anti:fake
+matb33:collection-hooks
+aldeed:collection2
+
+aldeed:autoform
+
+meteoric:ionic-sass
+meteoric:ionicons-sass
+meteoric:ionic
+meteoric:autoform-ionic
+useraccounts:ionic
+
+percolate:velocityjs
+mdg:geolocation
+
+# Packages from app:
+bigu-login

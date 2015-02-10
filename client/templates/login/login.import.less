@@ -1,0 +1,34 @@
+video {
+  position: fixed; right: 0; bottom: 0;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto; z-index: -100;
+  background: url(../images/video-poster.jpg) no-repeat;
+  background-size: cover;
+}
+
+
+.page.login {
+  .display(flex);
+  .justify-content(space-around);
+  .flex-direction(column);
+  .align-content(center);
+  .align-items(center);
+
+  .btn-twitter {
+    width: 120px;
+  }
+  
+  h1 {
+    .type-secondary();
+    .font-l4();
+    color: @color-empty;
+    text-align: center;
+
+    p {
+      margin-top: 1rem;
+      .type-bold();
+      .font-m2();
+    }
+  }
+
+}

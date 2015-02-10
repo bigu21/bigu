@@ -1,0 +1,18 @@
+template(name="appLayout")
+  +ionBody
+    +ionNavBar(class="bar-stable")
+    +ionNavView
+      +yield
+    if isAndroid
+      +ionTabs(style="android")
+        +ionTab(title="Trending" path="trending" icon="android-star")
+        +ionTab(title="Recent" path="recent" icon="android-time")
+        +ionTab(title="Notifications" path="notifications" icon="android-notifications")
+        +ionTab(title="Profile" path="profile" icon="android-happy")
+    else
+      +ionTabs(style="ios")
+        +ionTab(title="Histórico" path="recent" iconOff="ios-clock-outline"
+          iconOn="ios-clock" class="tab-item-positive")
+        +ionTab(title="Carona" path="carona" iconOff="ios-bolt-outline" iconOn="ios-bolt" class="tab-item-positive")
+        +ionTab(title="Configurações" path="settings"
+        iconOff="ios-gear-outline" iconOn="ios-gear" class="tab-item-positive")

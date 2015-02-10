@@ -42,5 +42,14 @@ App.launchScreens({
   'android_xhdpi_landscape': 'resources/splash/splash-1280x720.png'
 });
 
-App.setPreference('StatusBarOverlaysWebView', 'false');
-App.setPreference('StatusBarBackgroundColor', '#000000');
+//App.setPreference('StatusBarOverlaysWebView', 'true');
+//App.setPreference('MediaPlaybackRequiresUserAction', 'false');
+//App.setPreference('AllowInlineMediaPlayback', 'true');
+//App.setPreference('StatusBarStyle', 'default');
+//App.setPreference('StatusBarBackgroundColor', '#FF9933');
+
+App.configurePlugin('com.phonegap.plugins.facebookconnect', {
+  APP_ID: '***REMOVED***',
+  API_KEY: '***REMOVED***',
+  APP_NAME: 'Bigu'
+});

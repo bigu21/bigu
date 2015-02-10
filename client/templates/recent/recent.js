@@ -1,0 +1,2 @@
+Template.recent.rendered = function() {
+}
