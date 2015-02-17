@@ -4,14 +4,16 @@
   //}
 //});
 
-Template.settings.events({
+Template.logoutButton.events({
   'click .logout': function() {
-    Meteor.logout();
-    Router.go('login');
+    Meteor.logout(function () {
+      Router.go('login');
+    });
   }
 });
 
 Template.reportBug.rendered = function() {
+  scrollTo(0, 1); // XXX transition misterious hack
 
  if(Session.equals('buggyMode', true)) {
   $('input[name="buggy-mode"]')[0].checked = true;

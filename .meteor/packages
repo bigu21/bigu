@@ -11,14 +11,15 @@ launch-screen
 jquery
 accounts-facebook
 service-configuration
-#autopublish
-#insecure
-
+underscore
+autopublish
+insecure
 
 # Packages from Atmosphere:
-mquandalle:jade
+fourseven:scss
 iron:router
 zimme:iron-router-active
+mquandalle:jade
 
 anti:fake
 matb33:collection-hooks
@@ -28,12 +29,12 @@ aldeed:autoform
 
 meteoric:ionic-sass
 meteoric:ionicons-sass
-meteoric:ionic
+meteoric:ionic #XXX Using a local version for now
 meteoric:autoform-ionic
 useraccounts:ionic
 
 percolate:velocityjs
 mdg:geolocation
 
-# Packages from app:
+# Packages from app(local):
 bigu-login

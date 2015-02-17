@@ -1,0 +1,14 @@
+template(name="chat")
+
+  +contentFor("headerTitle")
+    h1.title Carona
+
+  +ionView
+    +ionContent
+      +ionList
+        each chats
+          +ionItem(path="chat.show" avatar="true" buttonRight="true" iconRight="true")
+              img(src="#{avatarUrl}")
+              h2 #{name.first} #{name.last}
+              p #{topic} 
+              +ionIcon(icon="ios-arrow-forward" class="positive")

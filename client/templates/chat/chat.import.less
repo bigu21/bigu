@@ -1,0 +1,34 @@
+.messages {
+  .display(flex);
+  .align-content(center);
+  .align-items(center);
+  margin-bottom: 20px;
+
+  &.other {
+    .msg {
+      text-align: right;
+
+      span {
+        /*color: #000;*/
+        background-color: @orange;
+      }
+    }
+  }
+
+  .msg {
+    .flex(1 1 auto);
+    padding: 10px;
+    overflow: hidden;
+    text-align: left;
+
+    span {
+      background-color: @dark-orange;
+      display: inline-block;
+      color: #FFF;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: left;
+      max-width: 240px;
+    }
+  }
+}

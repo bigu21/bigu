@@ -19,7 +19,7 @@ Accounts.registerLoginHandler(function(loginRequest) {
 
   var options = {profile: {}};
 
-  //var profileFields= [
+  //var profileFields = [
     //"name", "first_name", "last_name", "link", "gender", "locale", "timezone", "updated_time", "verified"
   //];
 

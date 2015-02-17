@@ -45,7 +45,7 @@ Meteor.startup(function() { // Because Cordova things must be ensured here
             });
 
           } else {
-            Router.go('carona');
+            Router.go('chat');
           }
 
       } else if(Accounts.loginServicesConfigured()) {
