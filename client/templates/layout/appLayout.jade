@@ -5,14 +5,11 @@ template(name="appLayout")
       +yield
     if isAndroid
       +ionTabs(style="android")
-        +ionTab(title="Trending" path="trending" icon="android-star")
-        +ionTab(title="Recent" path="recent" icon="android-time")
-        +ionTab(title="Notifications" path="notifications" icon="android-notifications")
-        +ionTab(title="Profile" path="profile" icon="android-happy")
+        +ionTab(title="Caronas" path="recent" icon="android-car")
+        +ionTab(title="Chats" path="chat" icon="android-chat")
+        +ionTab(title="Configurações" path="settings" icon="android-settings")
     else
       +ionTabs(style="ios")
-        +ionTab(title="Histórico" path="recent" iconOff="ios-clock-outline"
-          iconOn="ios-clock" class="tab-item-positive")
-        +ionTab(title="Carona" path="chat" iconOff="ios-bolt-outline" iconOn="ios-bolt" class="tab-item-positive")
-        +ionTab(title="Configurações" path="settings"
-        iconOff="ios-gear-outline" iconOn="ios-gear" class="tab-item-positive")
+        +ionTab(title="Caronas" path="recent" iconOff="ios-navigate-outline" iconOn="ios-navigate" class="tab-item-positive")
+        +ionTab(title="Chats" path="chat" iconOff="ios-chatbubble-outline" iconOn="ios-chatbubble" class="tab-item-positive")
+        +ionTab(title="Configurações" path="settings" iconOff="ios-gear-outline" iconOn="ios-gear" class="tab-item-positive")

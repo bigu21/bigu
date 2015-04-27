@@ -1,1 +1,4 @@
 io.lookback.sdk@https://github.com/lookback/cordova-lookback/tarball/051e720ecd3f42ea512b17f9ce04f76a0dbed75d
+de.appplant.cordova.plugin.local-notification@0.8.1
+org.apache.cordova.dialogs@0.3.0
+org.apache.cordova.vibration@0.3.13

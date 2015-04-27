@@ -1,0 +1,13 @@
+{
+    "apn": {
+    "passphrase": "***REMOVED***",
+    "key": "push_certificates/apn/dev/BiguKey.pem",
+    "cert": "push_certificates/apn/dev/BiguCert.pem",
+    "gateway": "gateway.sandbox.push.apple.com"
+  },
+  "production": false,
+  "badge": true,
+  "sound": true,
+  "alert": true,
+  "vibrate": true
+}

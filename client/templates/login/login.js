@@ -1,5 +1,7 @@
 Template.login.events({
   'click .page.login .btn-facebook': function(e) {
-    Meteor.loginWithFacebookAndCordova();
+    Meteor.loginWithFacebook(function() {
+      Router.go('chat');
+    });
   }
 });

@@ -1,9 +1,6 @@
 template(name="loginLayout")
-  #container
-    section#menu
-    
-    .notifications
-    .content-overlay
-
-    #content-container
+  +ionBody
+    //-+ionNavBar(class="bar-stable")
+    +ionNavView
       +yield
+

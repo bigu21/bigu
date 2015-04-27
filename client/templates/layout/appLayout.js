@@ -1,15 +1,24 @@
 Template.appLayout.rendered = function () {
-  this.autorun(function() {
+  var template = this;
+  template.autorun(function() {
     if(Session.equals('renderTabs', true)) {
-      Session.set('hasTabs', true);
-      //$('.tabs').addClass('tabs-item-hide');  
-      $('.tabs').css('visibility', 'visible');  
+
+      if(Session.equals('hasTabs', true)) {
+        template.$('.content').addClass('has-tabs');  
+        template.$('.tabs').removeClass('tabs-item-hide');  
+      }
+
+      if(Session.equals('hasTabsTop', true))
+        template.$('.content').addClass('has-tabs-top');  
+
     } else {
-      Session.set('hasTabs', false);
-      $('.tabs').css('visibility', 'hidden');  
+        Meteor.setTimeout(function() {
+          template.$('.tabs').addClass('tabs-item-hide');  
+          template.$('.has-tabs').removeClass('has-tabs');  
+          template.$('.has-tabs-top').removeClass('has-tabs-top');  
+        }, 0);
     }
   });
-
 
 };
 

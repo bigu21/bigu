@@ -1,4 +1,5 @@
 App.info({
+  id: 'co.biguapp.app',
   name: 'Bigu',
   description: 'Carona universitária, só amor.',
   author: 'Bigu21',
@@ -42,11 +43,11 @@ App.launchScreens({
   'android_xhdpi_landscape': 'resources/splash/splash-1280x720.png'
 });
 
-//App.setPreference('StatusBarOverlaysWebView', 'true');
-//App.setPreference('MediaPlaybackRequiresUserAction', 'false');
-//App.setPreference('AllowInlineMediaPlayback', 'true');
-//App.setPreference('StatusBarStyle', 'default');
-//App.setPreference('StatusBarBackgroundColor', '#FF9933');
+App.setPreference('StatusBarOverlaysWebView', 'true');
+App.setPreference('MediaPlaybackRequiresUserAction', 'false');
+App.setPreference('AllowInlineMediaPlayback', 'true');
+App.setPreference('StatusBarStyle', 'default');
+App.setPreference('StatusBarBackgroundColor', '#FF9933');
 
 App.configurePlugin('com.phonegap.plugins.facebookconnect', {
   APP_ID: '***REMOVED***',

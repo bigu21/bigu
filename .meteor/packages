@@ -1,27 +1,42 @@
 # Meteor packages used by this project, one per line.
 #
-# 'meteor add' and 'meteor remove' will edit this file for you,
+# '' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
 # Packages from release:
 meteor-platform
 less
+
+#appcache
+#browser-policy
+
 fastclick
 launch-screen
 jquery
-accounts-facebook
+http
 service-configuration
 underscore
-autopublish
-insecure
+stevezhu:lodash
+
+#autopublish
+#insecure
 
 # Packages from Atmosphere:
+
+percolatestudio:segment.io@1.1.1_1
+
+meteorhacks:kadira
+meteorhacks:fast-render
+meteorhacks:unblock
+meteorhacks:subs-manager
+
 fourseven:scss
 iron:router
 zimme:iron-router-active
 mquandalle:jade
 
 anti:fake
+dburles:collection-helpers
 matb33:collection-hooks
 aldeed:collection2
 
@@ -29,12 +44,28 @@ aldeed:autoform
 
 meteoric:ionic-sass
 meteoric:ionicons-sass
-meteoric:ionic #XXX Using a local version for now
 meteoric:autoform-ionic
 useraccounts:ionic
 
 percolate:velocityjs
 mdg:geolocation
 
+momentjs:moment
+copleykj:livestamp
+
+msavin:mongol
+
+elevatedevdesign:feedback
+
+raix:push
+
 # Packages from app(local):
-bigu-login
+bigu21:login
+gbr:hotjar
+meteoric:ionic
+
+# Testing
+velocity:core
+velocity:html-reporter
+
+sanjo:jasmine

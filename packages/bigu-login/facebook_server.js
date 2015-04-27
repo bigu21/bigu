@@ -1,7 +1,10 @@
+Accounts.oauth.registerService('facebook');
+
 Accounts.registerLoginHandler(function(loginRequest) {
-  if(!loginRequest.cordova) {
-    return undefined;
-  }
+  console.log('OH PORRA');
+  //if(!loginRequest.cordova) {
+    //return undefined;
+  //}
 
   loginRequest = loginRequest.authResponse;
   var identity = getIdentity(loginRequest.accessToken);
@@ -27,11 +30,10 @@ Accounts.registerLoginHandler(function(loginRequest) {
   //_.extend(options.profile, profileFields);
 
   // GET AND SAVE PROFILE URL
-  //var profilePicture = getProfilePicture(loginRequest.accessToken);
-  //serviceData.avatar = profilePicture;
+  var profilePicture = getProfilePicture(loginRequest.accessToken);
+  serviceData.avatar = profilePicture;
 
   return Accounts.updateOrCreateUserFromExternalService("facebook", serviceData, options);
-
 });
 
 var getIdentity = function (accessToken) {

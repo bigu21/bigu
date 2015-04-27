@@ -1,6 +1,7 @@
 Package.describe({
   summary: 'Provides Bigu login functionality',
-  version: '0.0.1'
+  version: '0.0.1',
+  name: 'bigu21:login'
 });
 
 Cordova.depends({
