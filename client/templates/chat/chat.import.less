@@ -1,3 +1,12 @@
+.chatItem {
+  background: linear-gradient(to bottom right, rgba(211, 131, 18, 0.3),
+  rgba(168, 50, 121, 0.3));
+  border:0;
+  h2 {
+    color: #FFF;
+  }
+}
+
 .animated {
   .animation-duration(1s);
   .animation-fill-mode(both);
@@ -13,29 +22,25 @@
 
 @-webkit-keyframes pulse {
   0% {
-    .scale3d(1, 1, 1);
-  }
-
-  50% {
-    .scale3d(1.05, 1.05, 1.05);
+    .scale3d(0.93, 0.93, 0.93);
+    .opacity(0.5);
   }
 
   100% {
     .scale3d(1, 1, 1);
+    .opacity(1);
   }
 }
 
 @keyframes pulse {
   0% {
-    .scale3d(1, 1, 1);
-  }
-
-  50% {
-    .scale3d(1.05, 1.05, 1.05);
+    .scale3d(0.93, 0.93, 0.93);
+    .opacity(0.5);
   }
 
   100% {
     .scale3d(1, 1, 1);
+    .opacity(1);
   }
 }
 
@@ -67,7 +72,7 @@
 
 .messages {
   img.avatar.animate, .msg .bubble.animate {
-      .animation-delay(0.3);
+      /*.animation-delay(0.3);*/
       .animated();
       .pulse();
   }
@@ -78,13 +83,13 @@
   .display(flex);
   .align-content(center);
   .align-items(center);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
 
   img.avatar {
     display: none;
     order: 1;
-    margin: 19px 3px 0 0;
+    margin: 19px 5px 0 0;
     height: 2rem;
     width: 2rem;
     box-sizing: border-box;
@@ -95,7 +100,7 @@
     background-size: cover;
 
     box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-    border-radius: 100%;
+    border-radius: 50%;
     border: 1px solid #DFF;
 
     /*background: url('/img/app/bigu-logo.png');*/
@@ -116,6 +121,7 @@
     .user-select(text);
 
     .bubble {
+      -webkit-font-smoothing: subpixel-antialiased;
       font-size: 1rem;
       color: #FFF;
       background-color: @blue;
@@ -139,7 +145,7 @@
         position: relative;
         float: left;
         content: '';
-        margin: 7px 0 0 -18px;
+        margin: 7px 0 0 -17px;
         width: 0;
         height: 0;
         border-style: solid;
@@ -154,7 +160,7 @@
 
     img {
       order: 3;
-      margin: 19px 0 0 3px;
+      margin: 19px 0 0 5px;
     }
 
 
@@ -174,7 +180,7 @@
           position: relative;
           float: right;
           content: '';
-          margin: 7px -18px 0 0;
+          margin: 7px -17px 0 0;
           width: 0;
           height: 0;
           border-style: solid;

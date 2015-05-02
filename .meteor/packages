@@ -69,3 +69,5 @@ velocity:core
 velocity:html-reporter
 
 sanjo:jasmine
+msavin:jetsetter
+raix:handlebar-helpers

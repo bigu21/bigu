@@ -1,10 +1,9 @@
 Accounts.oauth.registerService('facebook');
 
 Accounts.registerLoginHandler(function(loginRequest) {
-  console.log('OH PORRA');
-  //if(!loginRequest.cordova) {
-    //return undefined;
-  //}
+  if(!loginRequest.cordova) {
+    return undefined;
+  }
 
   loginRequest = loginRequest.authResponse;
   var identity = getIdentity(loginRequest.accessToken);

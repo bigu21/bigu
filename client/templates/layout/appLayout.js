@@ -8,8 +8,10 @@ Template.appLayout.rendered = function () {
         template.$('.tabs').removeClass('tabs-item-hide');  
       }
 
-      if(Session.equals('hasTabsTop', true))
+      if(Session.equals('hasTabsTop', true)) {
         template.$('.content').addClass('has-tabs-top');  
+        template.$('.tabs').removeClass('tabs-item-hide');  
+      }
 
     } else {
         Meteor.setTimeout(function() {
