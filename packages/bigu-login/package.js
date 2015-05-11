@@ -1,7 +1,7 @@
 Package.describe({
   summary: 'Provides Bigu login functionality',
   version: '0.0.1',
-  name: 'bigu21:login'
+  name: 'bigu:login'
 });
 
 Cordova.depends({
@@ -10,7 +10,6 @@ Cordova.depends({
 
 Package.onUse(function(api) {
 
-  api.use('iron:router', ['client', 'server']);
   api.use('accounts-base', ['client', 'server']);
   // Export Accounts (etc) to packages using this one.
   api.imply('accounts-base', ['client', 'server']);

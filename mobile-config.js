@@ -43,11 +43,25 @@ App.launchScreens({
   'android_xhdpi_landscape': 'resources/splash/splash-1280x720.png'
 });
 
-App.setPreference('StatusBarOverlaysWebView', 'true');
+App.setPreference('webviewbounce', 'false');
+App.setPreference('DisallowOverscroll', 'true');
+
+App.setPreference('AutoHideSplashScreen', 'false');
+App.setPreference('ShowSplashScreenSpinner', 'false');
+App.setPreference('SplashScreen', 'screen');
+App.setPreference('SplashScreenDelay', '15000');
+
+App.setPreference('UIStatusBarHidden', 'true');
+App.setPreference('UIViewControllerBasedStatusBarAppearance', 'false');
+
+//App.setPreference('StatusBarOverlaysWebView', 'true');
+//App.setPreference('StatusBarStyle', 'default');
+
 App.setPreference('MediaPlaybackRequiresUserAction', 'false');
 App.setPreference('AllowInlineMediaPlayback', 'true');
-App.setPreference('StatusBarStyle', 'default');
-App.setPreference('StatusBarBackgroundColor', '#FF9933');
+
+App.accessRule('*');
+
 
 App.configurePlugin('com.phonegap.plugins.facebookconnect', {
   APP_ID: '***REMOVED***',

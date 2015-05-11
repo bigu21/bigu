@@ -1,7 +1,7 @@
 Package.describe({
   summary: "Hotjar integration for Meteor",
   version: "1.0.0_1",
-  name: "gbr:hotjar",
+  name: "bigu:hotjar",
   git: "https://github.com/bigu21/meteor-hotjar.git"
 });
 

@@ -26,26 +26,17 @@ stevezhu:lodash
 percolatestudio:segment.io@1.1.1_1
 
 meteorhacks:kadira
-meteorhacks:fast-render
-meteorhacks:unblock
-meteorhacks:subs-manager
+#meteorhacks:fast-render
+#meteorhacks:unblock
+#meteorhacks:subs-manager
 
-fourseven:scss
-iron:router
-zimme:iron-router-active
 mquandalle:jade
 
-anti:fake
+#anti:fake
 dburles:collection-helpers
 matb33:collection-hooks
-aldeed:collection2
 
-aldeed:autoform
-
-meteoric:ionic-sass
-meteoric:ionicons-sass
-meteoric:autoform-ionic
-useraccounts:ionic
+#raix:handlebar-helpers
 
 percolate:velocityjs
 mdg:geolocation
@@ -53,21 +44,28 @@ mdg:geolocation
 momentjs:moment
 copleykj:livestamp
 
-msavin:mongol
-
 elevatedevdesign:feedback
 
 raix:push
 
+meteortoys:allthings
+
+meteorhacks:flow-router
+meteorhacks:flow-layout
+arillo:flow-router-helpers
+
+chriswessels:hammer
+
+#nucleuside:live-update
+
 # Packages from app(local):
-bigu21:login
-gbr:hotjar
-meteoric:ionic
+bigu:login
+bigu:device
+bigu:keyboard
+bigu:hotjar
 
 # Testing
 velocity:core
 velocity:html-reporter
-
 sanjo:jasmine
-msavin:jetsetter
-raix:handlebar-helpers
+xolvio:cucumber

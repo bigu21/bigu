@@ -1,0 +1,64 @@
+.page.chatList {
+   z-index: -9999999999999;
+   overflow: hidden;
+   /*background: linear-gradient(to bottom right, rgba(211, 131, 18, 0.85),*/
+   /*rgba(168, 50, 121, 0.85)),*/
+   /*url('https://scontent-a-fra.xx.fbcdn.net/hphotos-ash2/t31.0-8/459720_642901589060638_2035169384_o.jpg');*/
+   background: linear-gradient(to bottom right, rgba(41, 36, 132, 0.85),
+   rgba(102, 245, 201, 0.85)),
+   url('https://scontent-a-fra.xx.fbcdn.net/hphotos-ash2/t31.0-8/459720_642901589060638_2035169384_o.jpg');
+   .background-size(cover);
+   background-position: center;
+   background-attachment: fixed;
+
+
+   ul {
+     li a {
+       &:active, &:hover {
+
+       }
+
+       .display(flex); 
+       .justify-content(flex-start);
+       .align-content(center);
+       .align-items(center);
+       min-height: 3.5rem;
+       width: 100%;
+       box-shadow: 0 1px 2px 0px rgba(0,0,0,0.5);
+       background: #FFF;
+       padding: .8em;
+       color: #000;
+       text-decoration: none;
+
+
+       img {
+         order: 1;
+         height: 3em;
+         width: 3em;
+         box-sizing: border-box;
+         -webkit-touch-callout: none;
+         .user-select(none);
+         .align-self(flex-start);
+         background-position: center;
+         background-size: cover;
+         margin: 0 .5em 0 0;
+
+         box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+         border-radius: 50%;
+         border: 1px solid #DFF;
+       }
+
+       span {
+         order: 2;
+       }
+
+       .icon-right {
+         order: 3;
+         margin: auto .5em auto auto;
+         color: @orange;
+         font-size: 1.5em;
+       }
+
+     }
+   }
+ }
