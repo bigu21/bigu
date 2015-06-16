@@ -6,30 +6,36 @@ Template.appBody.rendered = function() {
 
   template.find('#content-container')._uihooks = {
     insertElement: function(node, next) {
-    var start = (initiator === 'back') ? '-100%' : '100%'; 
+      Session.set('isNavTransitionInProgress', true);
+      var start = (initiator === 'back') ? '-100%' : '100%'; 
 
-    $.Velocity.hook(node, 'translateX', start);
+      $.Velocity.hook(node, 'translateX', start);
 
-    $(node)
+      $(node)
       .insertBefore(next)
       .velocity({translateX: [0, start]}, {
         duration: 300,
         easing: 'easing-in-out',
-        queue: false
+        queue: false,
+        complete: function() {
+          Session.set('isNavTransitionInProgress', false);
+        }
       });
     },
     removeElement: function(node) {
+      Session.set('isNavTransitionInProgress', true);
       var end = (initiator === 'back') ? '100%' : '-100%'; 
 
       $(node)
-        .velocity({translateX: end}, {
-          duration: 300,
-          easing: 'easing-in-out',
-          queue: false,
-          complete: function() {
-            $(node).remove();
-          }
-        });
+      .velocity({translateX: end}, {
+        duration: 300,
+        easing: 'easing-in-out',
+        queue: false,
+        complete: function() {
+          Session.set('isNavTransitionInProgress', false);
+          $(node).remove();
+        }
+      });
     }
   }
 }

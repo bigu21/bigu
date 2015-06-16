@@ -23,26 +23,26 @@
   }
 
   &[class*="primary"] {
-    background-color: @color-primary;
+    background-color: @orange;
     color: @color-empty;
 
-    &:hover { background-color: darken(@color-primary, 5%); }
+    &:hover { background-color: darken(@orange, 5%); }
     &:active { box-shadow: rgba(0,0,0,.3) 0 1px 3px 0 inset; }
   }
 
   &[class*="secondary"] {
-    background: @color-tertiary;
+    background: @not-black;
     color: rgba(255,255,255,.4);
 
-    &:hover { background-color: darken(@color-tertiary, 5%); }
+    &:hover { background-color: darken(@not-black, 5%); }
     &:active { box-shadow: rgba(0,0,0,.3) 0 1px 3px 0 inset; }
 
     &.active,
     &.no-state:first-child {
-      background: @color-secondary;
+      background: @pink;
       color: @color-empty;
 
-      &:hover{ background-color: darken(@color-secondary, 5%); }
+      &:hover{ background-color: darken(@pink, 5%); }
       &:active{ box-shadow: rgba(0,0,0,.3) 0 1px 3px 0 inset; }
     }
 
@@ -51,7 +51,7 @@
 
   &[class*="tertiary"] {
     background: @color-raw;
-    color: @color-primary;
+    color: @orange;
 
     &:hover { background-color: @color-raw; }
   }
@@ -74,7 +74,7 @@
 
   &[class*="camera"] {
     border-radius: 10em;
-    box-shadow: @color-primary 0 0 0px 2px inset;
+    box-shadow: @orange 0 0 0px 2px inset;
     font-size: 20px; //reset
     height: 4rem;
     letter-spacing: 0; //reset
@@ -86,7 +86,7 @@
       @dimension-camera: 3.5rem;
       .position(absolute, 50%, 50%, auto, auto, @dimension-camera, @dimension-camera );
       .transform(translate3d(50%, -50%,0));
-      background-color: @color-primary;
+      background-color: @orange;
       border-radius: 10em;
       color: @color-empty;
       display: inline-block;
@@ -94,13 +94,13 @@
     }
 
     &:hover {
-      box-shadow: darken(@color-primary, 3%) 0 0 0px 2px inset;
-      .icon-camera { background-color: darken(@color-primary, 3%); }
+      box-shadow: darken(@orange, 3%) 0 0 0px 2px inset;
+      .icon-camera { background-color: darken(@orange, 3%); }
     }
 
     &:active {
-      box-shadow: darken(@color-primary, 3%) 0 0 0px 2px inset;
-      .icon-camera { background-color: darken(@color-primary, 3%); }
+      box-shadow: darken(@orange, 3%) 0 0 0px 2px inset;
+      .icon-camera { background-color: darken(@orange, 3%); }
     }
   }
 
@@ -117,3 +117,70 @@
     .flex(1);
   }
 }
+
+// toggleChat button with transformIcons
+.tcon {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 40px;
+  transition: 0.3s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 40px;
+  background: transparent;
+  outline: none; }
+  .tcon > * {
+    display: block; }
+  .tcon:hover, .tcon:focus {
+    outline: none; }
+  .tcon::-moz-focus-inner {
+    border: 0; }
+
+.tcon-grid {
+  padding: 1rem; }
+  .tcon-grid .tcon-grid__item {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: @orange;
+    color: @orange;
+    transition: 0.3s; }
+
+.tcon-grid.tcon-transform .tcon-grid__item {
+  -webkit-transform: rotate3d(0, 0, 1, -45deg) scale3d(.8, .8, .8);
+  transform: rotate3d(0, 0, 1, -45deg) scale3d(.8, .8, .8); }
+
+.tcon-grid--rearrange .tcon-grid__item {
+  box-shadow: -0.625rem -0.625rem, 0 -0.625rem, 0.625rem -0.625rem, -0.625rem 0, 0.625rem 0, -0.625rem 0.625rem, 0 0.625rem, 0.625rem 0.625rem; }
+
+.tcon-grid--rearrange.tcon-transform .tcon-grid__item {
+  box-shadow: 0 -0.5rem, 0 -1rem, 0.5rem 0, -1rem 0, 1rem 0, -0.5rem 0, 0 1rem, 0 0.5rem; }
+
+.tcon-visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+  .tcon-visuallyhidden:active, .tcon-visuallyhidden:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto; }
+

@@ -15,6 +15,7 @@ Package.onUse(function(api) {
   api.imply('accounts-base', ['client', 'server']);
   api.use('accounts-oauth', ['client', 'server']);
   api.use('facebook', ['client', 'server']);
+  api.use('service-configuration', ['client', 'server']);
 
   api.use('http', ['server']);
   api.use('underscore', ['client', 'server']);

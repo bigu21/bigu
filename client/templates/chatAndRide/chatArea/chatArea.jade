@@ -1,0 +1,34 @@
+template(name="chatArea")
+  +messagesContainer
+  +messageBar
+
+template(name="messagesContainer")
+    .content-scrollable
+      if(isReady)
+        each messages
+          +message
+      else
+        +loadingMessages
+
+template(name="message")
+  if(isReceived userId)
+    .messages.received 
+      .msg
+        .bubble #{message}
+          span.info #{user.services.facebook.name} &#8275; {{time sentAt}}
+      img.avatar(src="#{user.services.facebook.avatar}")
+  else
+    .messages
+      img.avatar(src="#{user.services.facebook.avatar}")
+      .msg
+        .bubble #{message}
+          span.info #{user.services.facebook.name} &#8275; {{time sentAt}}
+
+template(name="messageBar")
+    .touchLayer
+    .messageBar(data-keyboard-attach="true")
+      textarea.messageBox(rows="1")
+      button.sendBtn Enviar
+
+template(name="loadingMessages")
+  h1 Loading!

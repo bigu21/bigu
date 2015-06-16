@@ -1,2 +1,1 @@
-//Kadira.connect("***REMOVED***", "***REMOVED***");
-
+Kadira.connect("***REMOVED***", "***REMOVED***");

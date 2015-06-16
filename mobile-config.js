@@ -46,10 +46,10 @@ App.launchScreens({
 App.setPreference('webviewbounce', 'false');
 App.setPreference('DisallowOverscroll', 'true');
 
-App.setPreference('AutoHideSplashScreen', 'false');
+App.setPreference('AutoHideSplashScreen', 'true');
 App.setPreference('ShowSplashScreenSpinner', 'false');
 App.setPreference('SplashScreen', 'screen');
-App.setPreference('SplashScreenDelay', '15000');
+App.setPreference('SplashScreenDelay', '3000');
 
 App.setPreference('UIStatusBarHidden', 'true');
 App.setPreference('UIViewControllerBasedStatusBarAppearance', 'false');
@@ -60,8 +60,10 @@ App.setPreference('UIViewControllerBasedStatusBarAppearance', 'false');
 App.setPreference('MediaPlaybackRequiresUserAction', 'false');
 App.setPreference('AllowInlineMediaPlayback', 'true');
 
-App.accessRule('*');
+App.setPreference('KeyboardDisplayRequiresUserAction', 'false');
 
+
+App.accessRule('*');
 
 App.configurePlugin('com.phonegap.plugins.facebookconnect', {
   APP_ID: '***REMOVED***',

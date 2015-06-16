@@ -1,0 +1,9 @@
+template(name="chatList")
+  .page.chatList
+    ul
+      each chatList
+        li 
+          a(href="{{pathFor 'chatAndRide' chatId=_id}}")
+            img(src="#{avatarUrl}")
+            span #{name.first} #{name.last} 
+            .icon-right.icon-chat

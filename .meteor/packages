@@ -26,9 +26,10 @@ stevezhu:lodash
 percolatestudio:segment.io@1.1.1_1
 
 meteorhacks:kadira
-#meteorhacks:fast-render
-#meteorhacks:unblock
-#meteorhacks:subs-manager
+meteorhacks:kadira-debug
+meteorhacks:fast-render
+meteorhacks:unblock
+meteorhacks:subs-manager
 
 mquandalle:jade
 
@@ -37,6 +38,9 @@ dburles:collection-helpers
 matb33:collection-hooks
 
 #raix:handlebar-helpers
+
+# load ground:db AFTER collection-hooks: gh/velocity/issues/200
+#ground:db 
 
 percolate:velocityjs
 mdg:geolocation
@@ -54,7 +58,7 @@ meteorhacks:flow-router
 meteorhacks:flow-layout
 arillo:flow-router-helpers
 
-chriswessels:hammer
+moonco:hammer
 
 #nucleuside:live-update
 
@@ -63,9 +67,12 @@ bigu:login
 bigu:device
 bigu:keyboard
 bigu:hotjar
+bigu:autosize
+bigu:waypoints
 
 # Testing
-velocity:core
-velocity:html-reporter
-sanjo:jasmine
-xolvio:cucumber
+#velocity:core
+#velocity:html-reporter
+#velocity:console-reporter
+#sanjo:jasmine
+#xolvio:cucumber

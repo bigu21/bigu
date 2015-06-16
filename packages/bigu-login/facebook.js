@@ -1,3 +1,5 @@
+Accounts.oauth.registerService('facebook');
+
 if(Meteor.isClient) {
 
   Meteor.loginWithFacebook = function(options, callback) {

@@ -1,54 +1,15 @@
-// We don't want scrollbars on chat screen
+// We don't want scrollbars on chatArea screen
 ::-webkit-scrollbar {
   display:none;
 }
 
-
-.page.chatRoom {
-
-  section.ride {
-    background: linear-gradient(to bottom right, rgba(250, 250, 250, 0.5),
-    rgba(250, 250, 250, 0.75)),
-    url('http://festivalencantado.org/wp-content/uploads/2014/06/mapa-miranda-festival-encantado-2014.jpg');
-    .blur(2px);
-  }
-
-  section.chat, section.ride {
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
-  .topBar {
-    .position(absolute, 0, auto, auto, 5%, 90%, 5em);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    z-index: 1;
-
-    h1 {
-      font-size: 1em;
-      color: @dark-orange;
-      .position(absolute, 30%);
-    } 
-  }
-
-  .toggleChat {
-    .position(absolute, 35%, 0, auto, auto, 2em, 2em);
-    border-radius: 50%;
-    background: @dark-orange;
-    color: #FFF;
-    font-size: 1em; 
-    line-height: .2em;
-    text-indent: -.5em;
-    padding: 1em;
-    /*background: rgba(255, 204, 253, 0.7);*/
-  }
+.page.chatAndRide section.chatArea {
 
   .content-scrollable {
-    bottom: 40px;
+    bottom: 50px;
     top: 5em;
     z-index: 0;
-  };
+  }
 
   /*&::before {*/
     /*content: '';*/
@@ -79,36 +40,47 @@
   /*}*/
 
   .messageBar {
-    height: 40px;
     .position(absolute, auto, auto, 0, 0, 100%, auto);
+    width: 100% !important; // Cause autosize.js mess it, so we need !important
     .display(flex);
     .align-content(center);
     .justify-content(space-around);
-    background: rgba( 245, 245, 245, .3);
-    border-top: 1px solid #DDD; 
+    background: fade(@white, 95%);
+    border-top: 1px solid @grey; 
     padding: 2px 5px;
+    overflow: hidden;
 
-    input.messageBox {
+    .messageBox {
       &, &:active, &:focus {
         -webkit-appearance: none;
         width: 100%;
+        min-height: 40px;
+        max-height: 90px;
         padding: 10px;
-        border: 1px solid #DDD; 
-        border-radius: 5px;
+        /*border: 1px solid #DDD; */
+        /*border-radius: 5px;*/
         margin: 3px;
         font-size: 1em;
-        color: #AAA;
+        color: @not-black;
+        resize: none;
+        word-wrap: break-word;
+
+        border: 0;
+        border-radius: 0;
+        border-right: 1px dotted lighten(@grey, 5%);
+        background: transparent;
       }
     }
 
     button.sendBtn {
       &:active, &:focus, &.active {
-        color: @dark-orange;
+        /*color: @dark-orange;*/
+        font-weight: bolder;
       }
 
       min-width: 60px;
       background: transparent;
-      color: @orange;
+      color: @not-black;
       display: inline-block;
       white-space: nowrap;
       border: 0; 
@@ -174,8 +146,8 @@
     }
 
     padding: 0 10px;
-    @grey: #e5e5ea;
-    @blue: lighten(#1289fe, 20%);
+    @received-bubble: @grey;
+    @sent-bubble: lighten(@pink, 10%);
 
     .display(flex);
     .align-content(center);
@@ -196,7 +168,7 @@
       background-position: center;
       background-size: cover;
 
-      box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 1px fade(@black, 30%);
       border-radius: 50%;
       border: 1px solid #DFF;
 
@@ -220,16 +192,20 @@
       .bubble {
         font-size: 1rem;
         line-height: 1.5em;
-        color: #FFF;
-        background-color: @blue;
+        color: @white;
+        background-color: @sent-bubble;
         display: inline-block;
         padding: 10px;
+        box-shadow: 0 1px 1px fade(@not-white,30%);
         border-radius: 10px;
         text-align: left;
         max-width: 240px;
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: pre-wrap;
 
-        .time {
-          color: rgba(240, 240, 240, 0.7);
+        .info {
+          color: darken(@white, 5%);
           font-size: .6rem;
           padding: 0 5px;
           white-space: nowrap;
@@ -247,7 +223,7 @@
           height: 0;
           border-style: solid;
           border-width: 8px 8px 8px 0;
-          border-color: transparent @blue transparent
+          border-color: transparent @sent-bubble transparent
         }
 
       }
@@ -261,16 +237,17 @@
       }
 
 
+
       .msg {
         order: 2;
         text-align: right;
 
         .bubble {
-          color: #000;
-          background-color: @grey;
+          color: @black;
+          background-color: @received-bubble;
 
-          .time {
-            color: rgba(10, 10, 10, 0.5);
+          .info {
+            color: @not-black;
           }
 
           &::before {
@@ -282,7 +259,7 @@
             height: 0;
             border-style: solid;
             border-width: 8px 0 8px 8px;
-            border-color: transparent transparent transparent @grey;
+            border-color: transparent transparent transparent @received-bubble;
           }
 
         }
