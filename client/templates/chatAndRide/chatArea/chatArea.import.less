@@ -11,6 +11,46 @@
     z-index: 0;
   }
 
+  .noMessages {
+    font-size: 1.5em;
+
+    width: 90%;
+    margin: 5%;
+
+    color: @grey;
+    letter-spacing: .1em;
+    text-shadow: 0px 2px 3px #FFF;
+
+    .transition(font-size .3s ease-out .8s);
+    &.minimized {
+      font-size: 1em;
+    }
+
+
+    text-align: center;
+
+    .loadingMessages {
+      @width: 48px;
+      position: relative;
+      left: 50%;
+      margin-left: -@width/2;
+      margin-top: 10%;
+    }
+  }
+
+  .loadingMessages {
+    @width: 48px;
+    width: @width;
+    height: auto;
+
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -@width/2;
+    top: 50%;
+    margin-top: -@width/2;
+  }
+
   /*&::before {*/
     /*content: '';*/
     /*height: 100%;*/
@@ -140,25 +180,29 @@
 
 
   .messages {
+    .opacity(0);
+
     img.avatar.animate, .msg .bubble.animate {
       .animated();
       .pulse();
     }
 
     padding: 0 10px;
-    @received-bubble: @grey;
-    @sent-bubble: lighten(@pink, 10%);
+    @received-bubble: #ebecec;
+    @sent-bubble: #FEE9D9;
 
     .display(flex);
     .align-content(center);
     .align-items(center);
-    margin-bottom: 20px;
+    margin-bottom: 3px;
 
 
     img.avatar {
       display: none;
-      order: 1;
-      margin: 19px 5px 0 0;
+
+      order: 3;
+      margin: 19px 0 0 5px;
+
       height: 2rem;
       width: 2rem;
       box-sizing: border-box;
@@ -180,22 +224,23 @@
 
 
     .msg {
-      order: 2;
       .flex(1 1 auto);
       padding: 10px;
       overflow: hidden;
-      text-align: left;
+
+      order: 2;
+      text-align: right;
 
       -webkit-touch-callout: default;
       .user-select(text);
 
       .bubble {
         font-size: 1rem;
-        line-height: 1.5em;
-        color: @white;
+        line-height: 1em;
+        color: @black;
         background-color: @sent-bubble;
-        display: inline-block;
-        padding: 10px;
+        display: inline-table;
+        padding: 10px 10px 0 10px;
         box-shadow: 0 1px 1px fade(@not-white,30%);
         border-radius: 10px;
         text-align: left;
@@ -204,26 +249,45 @@
         word-break: break-all;
         white-space: pre-wrap;
 
-        .info {
-          color: darken(@white, 5%);
-          font-size: .6rem;
-          padding: 0 5px;
+        .name {
+          display: block;
+
+          position: relative; 
+          top: -10px;
+
+          font-size: .8em; 
+          font-weight: bold;
+
           white-space: nowrap;
+          border-bottom: 1px dotted @grey;
+        }
+
+        .info {
+          display: block;
+          float: right;
+          padding: 2px 0px 2px 10px;
+
+          color: darken(@black, 5%);
+
+          font-size: .6rem;
+          white-space: nowrap;
+
         }
 
 
         &::before {
           .display(flex);
           .align-self(center);
+
           position: relative;
-          float: left;
+          float: right;
           content: '';
-          margin: 7px 0 0 -17px;
+          margin: 7px -17px 0 0;
           width: 0;
           height: 0;
           border-style: solid;
-          border-width: 8px 8px 8px 0;
-          border-color: transparent @sent-bubble transparent
+          border-width: 8px 0 8px 8px;
+          border-color: transparent transparent transparent @sent-bubble;
         }
 
       }
@@ -232,19 +296,20 @@
     &.received {
 
       img {
-        order: 3;
-        margin: 19px 0 0 5px;
+        order: 1;
+        margin: 19px 5px 0 0;
       }
 
 
 
       .msg {
         order: 2;
-        text-align: right;
+        text-align: left;
 
         .bubble {
           color: @black;
           background-color: @received-bubble;
+          padding-top: 15px;
 
           .info {
             color: @not-black;
@@ -252,14 +317,14 @@
 
           &::before {
             position: relative;
-            float: right;
+            float: left;
             content: '';
-            margin: 7px -17px 0 0;
+            margin: 7px 0 0 -17px;
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 8px 0 8px 8px;
-            border-color: transparent transparent transparent @received-bubble;
+            border-width: 8px 8px 8px 0;
+            border-color: transparent @received-bubble transparent;
           }
 
         }

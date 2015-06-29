@@ -1,8 +1,15 @@
+var nextInitiator = null, initiator = null;
+Tracker.autorun(function() {
+  // add reactive dep
+  FlowRouter.watchPathChange();
+
+  initiator = nextInitiator;
+  nextInitiator = null;
+});
+
+
 Template.appBody.rendered = function() {
   var template = this;
-
-  nextInitiator = null;
-  initiator = null;
 
   template.find('#content-container')._uihooks = {
     insertElement: function(node, next) {
@@ -38,42 +45,19 @@ Template.appBody.rendered = function() {
       });
     }
   }
-}
-//Template.appLayout.rendered = function () {
-  //var template = this;
-  //template.autorun(function() {
-    //if(Session.equals('renderTabs', true)) {
 
-      //if(Session.equals('hasTabs', true)) {
-        //template.$('.content').addClass('has-tabs');  
-        //template.$('.tabs').removeClass('tabs-item-hide');  
-      //}
-
-      //if(Session.equals('hasTabsTop', true)) {
-        //template.$('.content').addClass('has-tabs-top');  
-        //template.$('.tabs').removeClass('tabs-item-hide');  
-      //}
-
-    //} else {
-        //Meteor.setTimeout(function() {
-          //template.$('.tabs').addClass('tabs-item-hide');  
-          //template.$('.has-tabs').removeClass('has-tabs');  
-          //template.$('.has-tabs-top').removeClass('has-tabs-top');  
-        //}, 0);
-    //}
-  //});
-
-//};
-
-//// Render tabs por default
-//Session.set('renderTabs', true);
-
-
-//// Reload this shitty
-//Template.chat.events({
-  //'click .item-avatar img': function() {
-    //window.location.reload();
+  //window.onpopstate = function(event) {
+  //nextInitiator = 'back';
+  //console.log(event);
   //}
-//});
+}
 
+Template.appBody.events({
+  'click .js-back': function(event) {
+    nextInitiator = 'back';
 
+    history.back();
+    event.stopImmediatePropagation();
+    event.preventDefault();
+  }
+});

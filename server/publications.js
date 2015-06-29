@@ -16,7 +16,7 @@ Meteor.publish('Chats/messages', function(chatId) {
     this.unblock();
 
     var totalMessages = Messages.find({ chatId: chatId}).count();
-    var messagesPerPage = 100;
+    var messagesPerPage = 25;
     var messagesToSkip = 0;
 
     // If totalMessages is gte double of messagesPerPage then we should already

@@ -1,4 +1,4 @@
-//var chatListSubs = new SubsManager();
+var chatListSubs = new SubsManager();
 
 Template.chatList.helpers({
   'chatList': function() {
@@ -10,5 +10,5 @@ Template.chatList.helpers({
 });
 
 Template.chatList.onCreated(function() {
-  this.subscribe('Chats/list');
+  chatListSubs.subscribe('Chats/list');
 });

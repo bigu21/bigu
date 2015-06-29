@@ -26,7 +26,21 @@ if(Meteor.isClient) {
     };
 
     var fbError = function(err) {
-      console.log(err);
+      if(err === 'Permission denied.') {
+        window.navigator.notification.alert(
+          'Facebook obrigatório',
+          'Desculpe mas você precisa logar no Facebook para prosseguir! Não postaremos \
+          em seu nome e guardaremos muito bem das suas informações.',
+          null,
+          'Entendi :)'
+        ); 
+      } else {
+        window.navigator.notification.alert(
+          'Ops, erro!',
+          'Parece que alguma coisa deu errado na nossa comunicação com Facebook,\
+          entre em contato com a gente para resolvermos. Erro: ' + err
+        );
+      }
     }
 
     if(typeof facebookConnectPlugin != "undefined" && Meteor.settings.facebook) {      

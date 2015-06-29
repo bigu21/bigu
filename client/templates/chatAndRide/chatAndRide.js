@@ -3,7 +3,9 @@ var chatAndRideObject =  function() {
 };
 
 chatAndRideObject.prototype = {
-
+  messagesQuery: function() { 
+    return Messages.find({ chatId: FlowRouter.getParam('chatId') });
+  },
   /*
    * We're going to hold everything here and load it asap(after render)
    */
@@ -102,20 +104,23 @@ chatAndRideObject.prototype = {
     }
   },
   showTopBar: function() {
-    this.__showTopBarAnimationRunning = true;
-
+    console.log('dads');
     // Ensure we will run it only if it's not playing already
-    if(this.__showTopBarAnimationRunning) {
+    if(! this.__showTopBarAnimationRunning) {
       this.elements.topBar.velocity('slideDown', {
         delay: 300,
         duration: 800,
         easing: [500, 20],
+        begin: function() {
+          this.__showTopBarAnimationRunning = true;
+        },
         complete: function() {
           this.__showTopBarAnimationRunning = false;
         }
       });
     }
   },
+  __showTopBarAnimationRunning: false,
   __setupTopBarHammer: function() {
     var self = this;
     var toggleChatHammer = new Hammer.Manager(this.elements.topBar[0]);
@@ -162,6 +167,8 @@ chatAndRideObject.prototype = {
       }
     ); 
     this.elements.chatArea.btnToggleChat.removeClass('minimized').addClass('maximized');
+
+    this.elements.chatArea.contentScrollable.find('.noMessages').removeClass('minimized')
   },
   /*
    * Apply styles/transitions for minimizing chat section
@@ -187,6 +194,8 @@ chatAndRideObject.prototype = {
     )
     .velocity({ height: newHeight  }, { duration: 0 }); 
     this.elements.chatArea.btnToggleChat.removeClass('maximized').addClass('minimized');
+
+    this.elements.chatArea.contentScrollable.find('.noMessages').addClass('minimized')
   },
   /*
    * Setup touchLayer CSS 
@@ -231,7 +240,7 @@ chatAndRideObject.prototype = {
       box: this.elements.chatArea.messageBox,
       sendBtn: this.elements.chatArea.sendBtn,
       getQuery: function() {
-        return Messages.find({ chatId: FlowRouter.getParam('chatId') })
+        return self.messagesQuery();
       }
     };
 
@@ -251,7 +260,7 @@ chatAndRideObject.prototype = {
           _id: Random.id(),
           chatId: FlowRouter.getParam('chatId'),
           userId: Meteor.userId(),
-          message: this.box.val(),
+          message: this.box.val().trim(),
           sentAt: new Date()
         }
       },
@@ -424,13 +433,19 @@ Template.message.onRendered(function() {
 });
 
 
-
 Template.messagesContainer.helpers({
   messages: function() {
-    return Messages.find({ chatId: FlowRouter.getParam('chatId') });
+    return chatAndRide.messagesQuery();
   },
   isReady: function() {
-    return Session.get('Messages/subscriptionReady') && !Session.get('isNavTransitionInProgress');
+    if(Session.get('Messages/subscriptionReady') 
+    && !Session.get('isNavTransitionInProgress')) {
+        return true;
+    }
+    return false;
+  },
+  hasMessages: function() {
+    return Session.get('totalMessages') !== 0;
   }
 });
 
@@ -448,12 +463,34 @@ Template.messagesContainer.onDestroyed(function() {
 Template.messagesContainer.onRendered(function() {
   var template = this;
 
+  Meteor.call('totalMessages', FlowRouter.getParam('chatId'), function(err, res) {
+    Session.set('totalMessages', res.count);
+  });
+
   if(_.isUndefined(chatAndRide.message))
     chatAndRide.setupChat();
 
   template.messagesQuery = chatAndRide.message.getQuery(); 
   template.initialized = false;
   template.scrolled = false;
+
+  Session.set('isLoadingMessagesAnimationInProgress', true);
+  template.find('.content-scrollable')._uihooks = {
+    removeElement: function(node) {
+      if($(node).hasClass('loadingMessages')) {
+
+        $(node).velocity({ translateY: '110vh' }, {
+          duration: 500, 
+          begin: function() {
+          },
+          complete: function() {
+            Session.set('isLoadingMessagesAnimationInProgress', false);
+          } 
+        }).velocity('fadeOut', { queue: false });
+      }
+    }
+  };
+
 
   this.autorun(function() {
 
@@ -467,6 +504,7 @@ Template.messagesContainer.onRendered(function() {
 
     if(template.subscription && template.subscription.ready()) {
       Session.set('Messages/subscriptionReady', true);
+
       // XXX Provide decent way to detect if we can initialize
       // handleNewMessages
       if(!template.initialized) {
@@ -484,15 +522,27 @@ Template.messagesContainer.onRendered(function() {
       }
       usersOnRoom = _.uniq(usersOnRoom);
       Meteor.subscribe('Users/Basic', usersOnRoom);
+
+      // Reset our scroll position
+      var routeName = FlowRouter.current().path;
+
+      if(! Session.get('isLoadingMessagesAnimationInProgress') 
+        || template.$('.loadingMessages').length === 0 ) {
+        if(! _.isUndefined(scrollPositions[routeName])) {
+          var $el = template.$('.restoreScroll').children().first();
+          $el.velocity('scroll', {
+            container: $('.restoreScroll'),
+            offset: scrollPositions[routeName] - $el.outerHeight()/2,
+            duration: 0
+          });
+        }
+
+        chatAndRide.elements.chatArea.contentScrollable
+        .find('.messages').velocity({ 'opacity': '1' }, { duration: 200 });
+      }
+
     }
 
-    if(!template.scrolled) {
-      // Reset our scroll position
-      //var routeName = 'hotfix-' + Router.current().route.getName();
-      //if(IonScrollPositions[routeName]) {
-      //$('.overflow-scroll').scrollTop(IonScrollPositions[routeName]);
-      //}
-    }
   }); 
 
   // To skip initiallly added docs while observeChanges
@@ -500,7 +550,6 @@ Template.messagesContainer.onRendered(function() {
     added: function(id, user) {
       if(template.initialized) {
         Session.set('Messages/beingSent', true);
-        scrolled = true;
       }
     }
   });

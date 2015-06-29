@@ -3,27 +3,32 @@ template(name="chatArea")
   +messageBar
 
 template(name="messagesContainer")
-    .content-scrollable
+    .content-scrollable.restoreScroll
       if(isReady)
-        each messages
-          +message
+        if(hasMessages)
+          each messages
+            +message
+        else
+            +noMessages
       else
         +loadingMessages
 
 template(name="message")
   if(isReceived userId)
     .messages.received 
-      .msg
-        .bubble #{message}
-          span.info #{user.services.facebook.name} &#8275; {{time sentAt}}
       img.avatar(src="#{user.services.facebook.avatar}")
+      .msg
+        .bubble
+          span.name #{user.services.facebook.name}
+          | #{message}
+          span.info {{time sentAt}}
   else
     .messages
-      img.avatar(src="#{user.services.facebook.avatar}")
       .msg
-        .bubble #{message}
-          span.info #{user.services.facebook.name} &#8275; {{time sentAt}}
-
+        .bubble 
+          | #{message}
+          span.info {{time sentAt}}
+    
 template(name="messageBar")
     .touchLayer
     .messageBar(data-keyboard-attach="true")
@@ -31,4 +36,10 @@ template(name="messageBar")
       button.sendBtn Enviar
 
 template(name="loadingMessages")
-  h1 Loading!
+  img.loadingMessages(src="/img/app/chat-loading.gif")
+
+template(name="noMessages")
+  .noMessages
+    +loadingMessages
+    | Nenhuma mensagem! <br/>
+    | Que tal você enviar uma?

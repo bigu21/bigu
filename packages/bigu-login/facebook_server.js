@@ -1,10 +1,32 @@
+Facebook = {};
+
+Facebook.getIdentity = function (accessToken) {
+  try {
+    return HTTP.get("https://graph.facebook.com/me", {
+      params: {access_token: accessToken}}).data;
+  } catch (err) {
+    throw _.extend(new Error("Failed to fetch identity from Facebook. " + err.message),
+                   {response: err.response});
+  }
+};
+
+Facebook.getProfilePicture = function (accessToken) {
+  try {
+    return HTTP.get("https://graph.facebook.com/v2.0/me/picture/?redirect=false", {
+      params: {access_token: accessToken}}).data.data.url;
+  } catch (err) {
+    throw _.extend(new Error("Failed to fetch identity from Facebook. " + err.message),
+                   {response: err.response});
+  }
+};
+
 Accounts.registerLoginHandler(function(loginRequest) {
   if(!loginRequest.cordova) {
     return undefined;
   }
 
   loginRequest = loginRequest.authResponse;
-  var identity = getIdentity(loginRequest.accessToken);
+  var identity = Facebook.getIdentity(loginRequest.accessToken);
 
   var serviceData = {
     accessToken: loginRequest.accessToken,
@@ -26,29 +48,9 @@ Accounts.registerLoginHandler(function(loginRequest) {
   //profileFields = _.pick(identity, profileFields);
   //_.extend(options.profile, profileFields);
 
-  // GET AND SAVE PROFILE URL
-  var profilePicture = getProfilePicture(loginRequest.accessToken);
-  serviceData.avatar = profilePicture;
+  // Get and save profile Url
+  //var profilePicture = Facebook.getProfilePicture(loginRequest.accessToken);
+  //serviceData.avatar = profilePicture;
 
   return Accounts.updateOrCreateUserFromExternalService("facebook", serviceData, options);
 });
-
-var getIdentity = function (accessToken) {
-  try {
-    return HTTP.get("https://graph.facebook.com/me", {
-      params: {access_token: accessToken}}).data;
-  } catch (err) {
-    throw _.extend(new Error("Failed to fetch identity from Facebook. " + err.message),
-                   {response: err.response});
-  }
-};
-
-var getProfilePicture = function (accessToken) {
-  try {
-    return HTTP.get("https://graph.facebook.com/v2.0/me/picture/?redirect=false", {
-      params: {access_token: accessToken}}).data.data.url;
-  } catch (err) {
-    throw _.extend(new Error("Failed to fetch identity from Facebook. " + err.message),
-                   {response: err.response});
-  }
-};

@@ -3,12 +3,14 @@
 .page.chatAndRide {
 
   section.rideArea {
-    background: linear-gradient(to bottom right, 
-    fade(@not-white, 95%),
-    fade(darken(@grey, 5%), 85%));
+    /*background: linear-gradient(to bottom right, */
+    /*fade(@not-white, 95%),*/
+    /*fade(darken(@grey, 0%), 85%));*/
 
-    .blur(0.1px);
-    .scale(1.03); // 'Crop' blurred edges of background
+    background: #f4f4f2;
+
+    /*.blur(0.1px);*/
+    /*.scale(1.03); // 'Crop' blurred edges of background*/
 
 
     /*background: linear-gradient(to bottom right, rgba(250, 250, 250, 0.5),*/
@@ -33,8 +35,15 @@
     h1 {
       font-size: 1em;
       color: @orange;
-      .position(absolute, 30%);
+      .position(absolute, 30%, auto, auto, 15%);
     } 
+  }
+
+  .js-back {
+    padding: 5px;
+    .position(absolute, 37%, auto, auto, 0, auto, auto);
+    font-size: 1.5em;
+    color: @orange;
   }
 
   .toggleChat {

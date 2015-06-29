@@ -22,4 +22,6 @@ Package.onUse(function(api) {
 
   api.add_files('facebook_server.js', 'server');
   api.add_files("facebook.js");
+
+  api.export('Facebook', 'server');
 });
