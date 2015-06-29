@@ -1,4 +1,7 @@
-![Bigu]( https://raw.githubusercontent.com/bigu21/bigu/new-readme/resources/splash/splash-320x200.png ) 
+![Bigu](
+https://raw.githubusercontent.com/bigu21/bigu/develop/public/img/app/bigu-logo.png?token=AAS8bhICtRSVhuXPKahRQFrJA-eSU5qhks5Vmot_wA%3D%3D
+) 
+
 # [Bigu - biguapp.co]( http://biguapp.co )
 
 
