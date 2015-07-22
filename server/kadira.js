@@ -1,1 +1,0 @@
-Kadira.connect("***REMOVED***", "***REMOVED***");
