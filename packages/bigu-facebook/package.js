@@ -1,7 +1,7 @@
 Package.describe({
-  summary: 'Provides Bigu login functionality',
+  summary: 'Provides Bigu Facebook login handler',
   version: '0.0.1',
-  name: 'bigu:login'
+  name: 'bigu:facebook'
 });
 
 Cordova.depends({
