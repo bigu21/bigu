@@ -19,6 +19,7 @@ Package.onUse(function (api) {
     'mongo',
     'react',
     'underscore', // lodash is or choice, but underscore still required for meteor
+    'check',
     'jquery',
     'random',
     'ejson'
