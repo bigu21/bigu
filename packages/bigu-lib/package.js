@@ -2,13 +2,13 @@ Package.describe({
   name: 'bigu:lib',
   summary: 'Bigu libraries.',
   version: '0.0.1',
-  git: "https://github.com/bigu21/bigu"
+  git: 'https://github.com/bigu21/bigu'
 });
 
 Package.onUse(function (api) {
 
   api.versionsFrom(['METEOR@1.1.0.2']);
-  
+
   // Custom set of meteor core dependencies, took from meteor-platform
   var packages = [
     'meteor',
@@ -18,7 +18,8 @@ Package.onUse(function (api) {
     'ddp',
     'mongo',
     'react',
-    'underscore', // lodash is or choice, but underscore still required for meteor
+    // lodash is or choice, but underscore still required for meteor
+    'underscore',
     'check',
     'jquery',
     'random',
@@ -28,12 +29,12 @@ Package.onUse(function (api) {
   api.use(packages);
   api.imply(packages);
 
- api.use([
+  api.use([
     // We can reload the client without messing up methods in flight.
     'reload',
     // And update automatically when new client code is available!
     'autoupdate'
-  ], ['client', 'server']);
+  ], [ 'client', 'server' ]);
 
   // More mobile specific implies
   api.imply([
@@ -52,7 +53,7 @@ Package.onUse(function (api) {
   // Careful, things appended to Bigu namespace will be avaiable everywhere
   api.addFiles([
     'lib/core.js',
-  ], ['client', 'server']);
+  ], [ 'client', 'server' ]);
 
   // Namespace it!
   api.export([
