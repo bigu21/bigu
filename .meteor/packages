@@ -1,1 +1,6 @@
 bigu:core
+
+# Testing
+velocity:html-reporter
+velocity:console-reporter
+xolvio:cucumber
