@@ -11,19 +11,7 @@ Package.onUse(function (api) {
 
   // Custom set of meteor core dependencies, took from meteor-platform
   var packages = [
-    'meteor',
-    'webapp',
-    'logging',
-    'tracker',
-    'ddp',
-    'mongo',
-    'react',
-    // lodash is or choice, but underscore still required for meteor
-    'underscore',
-    'check',
-    'jquery',
-    'random',
-    'ejson'
+    'meteor-platform'
   ];
 
   api.use(packages);
